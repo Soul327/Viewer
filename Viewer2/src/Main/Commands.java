@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import Misc.KeyManager;
 import Misc.Util;
+import States.StateViewer;
 
 public class Commands extends Thread{
 	//public void onCommand(CommandSender sender, Command command, String alias, String[] args){}
@@ -19,6 +20,7 @@ public class Commands extends Thread{
 					re ="help <command>\n" +
 							"search <query>\n" +
 							"parseFile <filelocation> <subfile size>\n" + 
+							"loadFile <filelocation>\n" + 
 							"set <varName> <value>";
 				}
 				if(args.length==2) {
@@ -27,18 +29,23 @@ public class Commands extends Thread{
 					}
 				}
 			}
-		if(args.length==2)
+		if(args.length==2) {
 			if(args[0].equalsIgnoreCase("search")) {
 				Util.findEntry(args[1]);
 				re = "Searching for "+args[1];
 			}
+			if(args[0].equalsIgnoreCase("loadFile")) {
+				Util.findEntry(args[1]);
+				re = "Searching for "+args[1];
+			}
+		}
 		if(args.length==3) {
 			if(args[0].equalsIgnoreCase("parseFile"))
 				Util.parseDataBase(new File(args[1]),Integer.parseInt(args[2]));
 			if(args[0].equalsIgnoreCase("set")) {
 				if(args[1].equalsIgnoreCase("fontSize")) {
 					int fontSize = Integer.parseInt(args[2]);
-					Viewer.listFontSize = fontSize;
+					States.StateViewer.listFontSize = fontSize;
 					re = "Set font to "+fontSize;
 				}
 				if(args[1].equalsIgnoreCase("ezViewMode")) {

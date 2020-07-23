@@ -7,7 +7,8 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import Main.Viewer;
+import Main.*;
+import States.StateViewer;
 
 public class MouseManager implements MouseListener, MouseMotionListener, MouseWheelListener {
 
@@ -66,6 +67,7 @@ public class MouseManager implements MouseListener, MouseMotionListener, MouseWh
 	}
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		Viewer.scroll(e.getUnitsToScroll());
+		//StateViewer.scroll(e.getUnitsToScroll());
+		Main.main.scroll(e.getUnitsToScroll());
 	}
 }

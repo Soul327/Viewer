@@ -11,7 +11,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
-import Main.StateManager;
+import States.StateManager;
 
 public class Graphics {
 	public int fontSize = 0;

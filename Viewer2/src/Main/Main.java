@@ -20,6 +20,7 @@ import javax.swing.JMenuBar;
 import Misc.Assets;
 import Misc.KeyManager;
 import Misc.MouseManager;
+import States.StateManager;
 
 public class Main implements Runnable {
 	
@@ -36,12 +37,13 @@ public class Main implements Runnable {
 	public static MouseManager mouseManager;
 	public static StateManager stateManager;
 	public static Thread load;
+	public static Main main;
 	
 	//Starts the program
 	public static void main(String args[]) throws FileNotFoundException, IOException {
 		Commands commands = new Commands();
 		commands.start();
-		Main main = new Main(); 
+		main = new Main();
 		main.start();
 	}
 	
@@ -85,6 +87,15 @@ public class Main implements Runnable {
 		
 		stateManager=new StateManager();
 	}
+	
+	public void scroll(int scrollAmount) {
+		stateManager.scroll(scrollAmount);
+	}
+	
+	public static void keyTyped(KeyEvent e) {
+		stateManager.keyTyped(e);
+	}
+	
 	private void tick(){
 		width=canvas.getWidth();
 		height=canvas.getHeight();

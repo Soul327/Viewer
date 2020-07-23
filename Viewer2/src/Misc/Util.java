@@ -7,20 +7,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 import Main.Address;
-import Main.Viewer;
 
 public class Util {
 	final static String domain = "database/temp/";
@@ -100,7 +95,7 @@ public class Util {
 				}
 		}
 	}
-	public static void nextFile() {
+	public static ArrayList<Address> nextFile() {
 		File directoryPath = new File(domain);
 		String contents[] = directoryPath.list();
 		Arrays.sort(contents);
@@ -112,9 +107,8 @@ public class Util {
 				else
 					file = new File(domain+contents[i]);
 			}
-			
 		}
-		loadFile();
+		return loadFile();
 	}
 	public static void printDir() {
 		File directoryPath = new File(domain);
@@ -123,9 +117,8 @@ public class Util {
 		for(int x=0;x<contents.length;x++) {
 			System.out.println(contents[x]);
 		}
-		loadFile();
 	}
-	public static void lastFile() {
+	public static ArrayList<Address> lastFile() {
 		File directoryPath = new File(domain);
 		String contents[] = directoryPath.list();
 		for(int i=0; i<contents.length-1; i++) {
@@ -133,15 +126,13 @@ public class Util {
 				file = new File(domain+contents[i]);
 			}
 		}
-		loadFile();
+		return loadFile();
 	}
-	public static void loadFile() {
-//		System.out.println("Loading file");
-		Viewer.list = new ArrayList<Address>();
+	public static ArrayList<Address> loadFile() {
+		ArrayList<Address> list = new ArrayList<Address>();
 		for(String s:Util.getSet(0)) 
-			Viewer.list.add(new Address(s));
-		//Collections.reverse(Viewer.list);
-//		System.out.println("Loaded file");
+			list.add(new Address(s));
+		return list;
 	}
 	public static void sel() {
 		JFileChooser fc = new JFileChooser();

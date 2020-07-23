@@ -2,7 +2,7 @@ package Misc;
 
 import java.awt.Point;
 
-import Main.StateManager;
+import States.StateManager;
 
 public class Mat {
 	public static double distance(double x1, double y1, double x2, double y2) {

@@ -2,6 +2,9 @@ package Misc;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import Main.Main;
+import States.StateConsole;
+
 public class KeyManager implements KeyListener {
 	
 	public static boolean[] keys;
@@ -13,7 +16,7 @@ public class KeyManager implements KeyListener {
 	public void tick(){
 		
 	}
-	static boolean keyLog[]=new boolean[256];
+	public static boolean keyLog[]=new boolean[256];
 	
 	public static boolean keyRelease(int key){
 		if(KeyManager.keys[key]){
@@ -42,7 +45,7 @@ public class KeyManager implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		//KeyManager.e=e;
+		Main.keyTyped(e);
 	}
 
 }
