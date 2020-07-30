@@ -14,8 +14,11 @@ public class Assets {
 	public static BufferedImage[] assets=new BufferedImage[100];
 	public static BufferedImage[][] ani=new BufferedImage[10][50];
 	public static ArrayList<ArrayList<BufferedImage>> anim = new ArrayList<ArrayList<BufferedImage> >(); 
+	public static BufferedImage folder;
 	
-	public static void init(){}
+	public static void init(){
+		folder = ImageLoader.loadImage("folder2.png");
+	}
 	//Divide up animation sheets & sprite sheets
 	public static void name(String s,int width, int height, int numberOfImages) {
 		BufferedImage image = ImageLoader.loadImage(s);
@@ -63,9 +66,8 @@ class ImageLoader {
 		try {
 			return ImageIO.read(new File(path));
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Graphics not found. Please place graphics in \n"+new File("").getAbsolutePath(), "Fatal Error Occured", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Graphics not found. \n"+new File("").getAbsolutePath(), "Fatal Error Occured", JOptionPane.INFORMATION_MESSAGE);
 			e.printStackTrace();
-			System.exit(1);
 		}
 		return null;
 	}

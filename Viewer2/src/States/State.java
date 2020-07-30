@@ -25,8 +25,6 @@ public abstract class State {
 			selected = true;
 		if(MouseManager.leftPressed & !mouseOverState)
 			selected = false;
-		
-		
 		tick();
 	}
 	public void srender(Graphics g) {

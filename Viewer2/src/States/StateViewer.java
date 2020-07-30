@@ -73,7 +73,7 @@ public class StateViewer extends State{
 			}
 			
 			//If mouse is over list
-			if(mx>0 & mx<listWidth)
+			if(mx>this.x & mx<listWidth+this.x)
 				//If mouse is over text
 				if(my>x*(g.fontSize)+scrollList & my<(x+1)*(g.fontSize)+scrollList){
 					g.setColor(Color.lightGray); g.fillRect(0, x*g.fontSize+scrollList, listWidth, g.fontSize);
@@ -132,7 +132,7 @@ public class StateViewer extends State{
 	}
 	public void renderScroll(Graphics g,int x,int y,int width,int height,double scroll) {
 		if(MouseManager.leftPressed)
-			if(mx>x & mx<x+width & my>y & my<y+height) {
+			if(mx>x+this.x & mx<x+width+this.x & my>y+this.y & my<y+height+this.y) {
 				scroll = (double)(my-5)/height;
 				sel = (int)Math.round(scroll*(list.size()-1));
 				scrollList = -sel;

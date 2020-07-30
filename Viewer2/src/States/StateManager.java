@@ -16,6 +16,7 @@ public class StateManager {
 		
 		s = new StateViewer();
 		s.visible = true;
+		s.xPer = .10;
 		s.widthPer = .75;
 		s.heightPer = 1;
 		states.add(s);
@@ -24,6 +25,13 @@ public class StateManager {
 		s.visible = true;
 		s.xPer = .75;
 		s.widthPer = .5;
+		s.heightPer = 1;
+		states.add(s);
+		
+		s = new StateFileList();
+		s.visible = true;
+		s.xPer = 0;
+		s.widthPer = .10;
 		s.heightPer = 1;
 		states.add(s);
 	}
